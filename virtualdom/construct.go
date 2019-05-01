@@ -1,0 +1,5 @@
+package virtualdom
+
+func construct() {
+	
+}
