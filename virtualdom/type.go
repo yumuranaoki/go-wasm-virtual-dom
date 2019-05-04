@@ -15,11 +15,11 @@ const (
 )
 
 // State manage state in view
-type State struct {}
+type State struct{}
 
 // Node represent component of dom
 type Node struct {
-	nodeType NodeType 
+	nodeType   NodeType
 	attributes map[Attribute]string
-	children []interface{}
+	children   []interface{}
 }
