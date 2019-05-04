@@ -32,13 +32,14 @@ func (v *VirtualDOM) RenderInitialState(html string) {
 	root.Set("innerHTML", html)
 }
 
-func (v *VirtualDOM) Render(html string) {
-	c := make(chan bool)
+func (v *VirtualDOM) Render(domChan chan string) {
 	document := js.Global().Get("document")
 	if v.root == "" {
 		log.Fatal("virtual dom needs to be initialized")
 	}
 	root := document.Call("getElementById", v.root)
-	root.Set("innerHTML", html)
-	<-c
+	for {
+		dom := <-domChan
+		root.Set("innerHTML", dom)
+	}
 }
